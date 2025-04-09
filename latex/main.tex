@@ -28,8 +28,6 @@
 \setlength{\parindent}{0pt}
 
 
-
-
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter\quad}{0pt}{}
 \titlespacing*{\chapter}{0pt}{12pt}{20pt}
 
@@ -39,23 +37,12 @@
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection\quad}{0pt}{}
 \titlespacing*{\subsection}{0pt}{4pt}{10pt}
 
-% ---------------------- Kopf-/Fußzeile ----------------------
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{Mai-Anh Pham}
-\fancyhead[R]{\leftmark}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Kapitelbeginn = fancy
-\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
 % ---------------------- TOC: Einträge ohne Seitenzahl ----------------------
 \newcommand{\nocountchapter}[1]{
   \chapter*{#1}
   \addcontentsline{toc}{chapter}{#1}
   \markboth{#1}{}
-  \thispagestyle{empty}
 }
 
 % ---------------------- Anhang Setup ----------------------
@@ -86,7 +73,6 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \markboth{Abstract}{}
-\thispagestyle{empty}
 \input{abstract}
 
 % Danksagung (dito)
@@ -94,7 +80,6 @@
 \chapter*{Danksagung}
 \addcontentsline{toc}{chapter}{Danksagung}
 \markboth{Danksagung}{}
-\thispagestyle{empty}
 \input{danksagung}
 
 % -------------------- Verzeichnisse (römische Seitenzahlen) --------------------
@@ -129,7 +114,6 @@
 % Hauptteil (arabische Seitenzahlen) 
 \cleardoublepage
 \pagenumbering{arabic}
-\pagestyle{fancy}
 \input{kapitel/einleitung.tex}
 \input{kapitel/methodik.tex}
 \input{kapitel/fazit.tex}
