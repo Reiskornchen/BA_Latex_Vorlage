@@ -1,0 +1,118 @@
+\documentclass[11pt]{report}
+
+% ---------------------- Pakete ----------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{setspace}         % 1.5-zeilig
+\usepackage{titlesec}         % Überschriftendesign
+\usepackage{fancyhdr}         % Kopf-/Fußzeile
+\usepackage{graphicx}         % Bilder
+\usepackage{booktabs}         % Tabellen
+\usepackage{caption, subcaption}
+\usepackage{biblatex}         % Literatur
+\usepackage{hyperref}         % klickbare Verweise
+\usepackage{tocloft}          % Inhaltsverzeichnis-Anpassung
+\usepackage{etoolbox}         % Patch für Kapitel-Kopfzeilen
+
+\addbibresource{literatur/quellen.bib}  % Bib-Datei einbinden
+
+% ---------------------- Formatierung ----------------------
+\onehalfspacing
+
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter\quad}{0pt}{}
+\titlespacing*{\chapter}{0pt}{12pt}{20pt}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection\quad}{0pt}{}
+\titlespacing*{\section}{0pt}{8pt}{15pt}
+
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection\quad}{0pt}{}
+\titlespacing*{\subsection}{0pt}{4pt}{10pt}
+
+% ---------------------- Kopf-/Fußzeile ----------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Mai-Anh Pham}
+\fancyhead[R]{\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Kapitelbeginn = fancy
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+% ---------------------- TOC: Einträge ohne Seitenzahl ----------------------
+\newcommand{\nocountchapter}[1]{
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+  \markboth{#1}{}
+  \thispagestyle{empty}
+}
+
+% ---------------------- Anhang Setup ----------------------
+\usepackage{chngcntr} % Abschnittszählung für Anhang
+\newcommand{\anhangchapter}[1]{%
+  \refstepcounter{chapter}%
+  \chapter*{Anhang~\Alph{chapter}:~#1}
+  \addcontentsline{toc}{chapter}{Anhang~\Alph{chapter}:~#1}%
+  \markboth{Anhang~\Alph{chapter}:~#1}{}
+  \setcounter{section}{0}
+  \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}%
+}
+
+% ---------------------- Dokument ----------------------
+\begin{document}
+
+% Titelblatt
+\input{titelblatt}
+\cleardoublepage
+
+% Römische Seitenzahlen (groß)
+\pagenumbering{Roman}
+
+% Abstract (ohne Seitenzahl, aber im TOC)
+\nocountchapter{Abstract}
+\input{abstract}
+
+% Danksagung (dito)
+\nocountchapter{Danksagung}
+\input{danksagung}
+
+% Inhaltsverzeichnis etc.
+\tableofcontents
+\listoffigures
+\listoftables
+\cleardoublepage
+
+% Arabische Seitenzahlen starten mit Kapitel 1
+\pagenumbering{arabic}
+
+% Kapitel
+\input{kapitel/einleitung}
+\input{kapitel/methodik}
+\input{kapitel/fazit}
+
+% Literaturverzeichnis
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\printbibliography[heading=bibintoc]
+
+% Anhangsverzeichnis (optional manuell)
+\cleardoublepage
+\chapter*{Anhangsverzeichnis}
+\addcontentsline{toc}{chapter}{Anhangsverzeichnis}
+
+% Anhang (A, B, ... mit Unterabschnitten wie A.1)
+\anhangchapter{Versuchsaufbau}
+Text des ersten Anhangs...
+
+\anhangchapter{Weitere Tabellen}
+Noch mehr...
+
+% Ehrenwörtliche Erklärung (ohne Seitenzahl, aber im TOC)
+\cleardoublepage
+\nocountchapter{Ehrenwörtliche Erklärung}
+\input{ehrenwort}
+
+\end{document}
