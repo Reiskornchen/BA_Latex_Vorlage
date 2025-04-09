@@ -16,12 +16,21 @@
 \usepackage{tocloft}          % Inhaltsverzeichnis-Anpassung
 \usepackage{etoolbox}         % Patch für Kapitel-Kopfzeilen
 \usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+
+
+
 
 
 \addbibresource{literatur/quellen.bib}  % Bib-Datei einbinden
 
 % ---------------------- Formatierung ----------------------
 \onehalfspacing
+\justifying
+\setlength{\parindent}{0pt}
+
+
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter\quad}{0pt}{}
 \titlespacing*{\chapter}{0pt}{12pt}{20pt}
@@ -64,6 +73,7 @@
 
 % ---------------------- Dokument ----------------------
 \begin{document}
+
 
 % Titelblatt
 \input{titelblatt}
