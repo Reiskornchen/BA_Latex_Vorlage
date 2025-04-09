@@ -27,42 +27,47 @@
   
       {\large
       Studiengang Wirtschaftsinformatik – Sales \& Consulting\\
-      Bearbeitungszeitraum: 
+      Bearbeitungszeitraum:
       }
   
       \vfill
-  
-      \begin{tabular}{@{}ll}
-      \textbf{Verfasser:} & Mai-Anh Pham \\
-      \textbf{Matrikelnummer:} & 5621973 \\
-      \textbf{Kurs:} & WWI22SCB \\
-      \textbf{Studiengangsleiter:} & Prof. Dr.-Ing. Clemens Martin \\
-      \end{tabular}
-  
-      \vspace{1cm}
-  
-      \begin{tabular}{@{}ll}
-      \textbf{Wiss. Betreuer:} & Prof. Dr.-Ing. Clemens Martin \\
-      \textbf{Mailadresse:} & martin@dhbw-mannheim.de \\
-      \end{tabular}
-  
-      \vspace{1cm}
-  
-      \begin{tabular}{@{}ll}
-      \textbf{Ausbildungsbetrieb:} & DB Systel GmbH \\
-      & Jürgen-Ponto-Platz 1 \\
-      & 60239 Frankfurt am Main / Deutschland \\
-      \end{tabular}
-  
-      \vspace{1cm}
-  
-      \begin{tabular}{@{}ll}
-      \textbf{Unternehmensbetreuer:} & XYZ \\
-      \textbf{Telefon (Firma):} & +49 \\
-      \textbf{Mailadresse (Firma):} & XYZ \\
-      \end{tabular}
-  
     \end{center}
   
-  \end{titlepage}
+    {\setlength{\parindent}{0pt} % keine Einrückung
   
+    \vspace{1.5cm}
+
+    \newcommand{\eintrag}[2]{\textbf{#1} & \begin{minipage}[t]{\dimexpr\linewidth-5cm}\raggedright #2\end{minipage} \\}
+
+\begin{tabular}{@{}p{4.8cm}l@{}}
+  \eintrag{Verfasser:}{Mai-Anh Pham}
+  \eintrag{Matrikelnummer:}{5621973}
+  \eintrag{Kurs:}{WWI22SCB}
+  \eintrag{Studiengangsleiter:}{Prof. Dr.-Ing. Clemens Martin}
+\end{tabular}
+
+\vspace{0.8cm}
+
+\begin{tabular}{@{}p{4.8cm}l@{}}
+  \eintrag{Wissenschaftl. Betreuer:}{XYZ}
+  \eintrag{Mailadresse:}{XYZ@abc.com}
+\end{tabular}
+
+\vspace{0.8cm}
+
+\begin{tabular}{@{}p{4.8cm}l@{}}
+  \eintrag{Ausbildungsbetrieb:}{DB Systel GmbH\\Jürgen-Ponto-Platz 1\\60239 Frankfurt am Main / Deutschland}
+\end{tabular}
+
+\vspace{0.8cm}
+
+\begin{tabular}{@{}p{4.8cm}l@{}}
+  \eintrag{Unternehmensbetreuer:}{XYZ}
+  \eintrag{Telefon (Firma):}{+49 ...}
+  \eintrag{Mailadresse (Firma):}{XYZ@abc.com}
+\end{tabular}
+
+    
+}
+\end{titlepage}
+
