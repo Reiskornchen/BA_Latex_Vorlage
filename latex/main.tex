@@ -73,26 +73,58 @@
 \pagenumbering{Roman}
 
 % Abstract (ohne Seitenzahl, aber im TOC)
-\nocountchapter{Abstract}
+\cleardoublepage
+\pagenumbering{gobble} % keine Seitenzahl anzeigen
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\markboth{Abstract}{}
+\thispagestyle{empty}
 \input{abstract}
 
 % Danksagung (dito)
-\nocountchapter{Danksagung}
+\cleardoublepage
+\chapter*{Danksagung}
+\addcontentsline{toc}{chapter}{Danksagung}
+\markboth{Danksagung}{}
+\thispagestyle{empty}
 \input{danksagung}
 
-% Inhaltsverzeichnis etc.
+% -------------------- Verzeichnisse (römische Seitenzahlen) --------------------
+\cleardoublepage
+\pagenumbering{Roman}
+
 \tableofcontents
-\listoffigures
-\listoftables
 \cleardoublepage
 
-% Arabische Seitenzahlen starten mit Kapitel 1
-\pagenumbering{arabic}
+% Abkürzungsverzeichnis beginnt mit Seite II
+\chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\cleardoublepage
 
-% Kapitel
-\input{kapitel/einleitung}
-\input{kapitel/methodik}
-\input{kapitel/fazit}
+% Abbildungsverzeichnis
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+
+%Tabellenverzeichnis
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+
+
+% Genderhinweis 
+\cleardoublepage
+\chapter*{Genderhinweis}
+\addcontentsline{toc}{chapter}{Genderhinweis}
+\input{genderhinweis.tex}
+
+% Hauptteil (arabische Seitenzahlen) 
+\cleardoublepage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\input{kapitel/einleitung.tex}
+\input{kapitel/methodik.tex}
+\input{kapitel/fazit.tex}
 
 % Literaturverzeichnis
 \cleardoublepage
@@ -102,18 +134,12 @@
 
 % Anhangsverzeichnis (optional manuell)
 \cleardoublepage
-\chapter*{Anhangsverzeichnis}
-\addcontentsline{toc}{chapter}{Anhangsverzeichnis}
-
-% Anhang (A, B, ... mit Unterabschnitten wie A.1)
-\anhangchapter{Versuchsaufbau}
-Text des ersten Anhangs...
-
-\anhangchapter{Weitere Tabellen}
-Noch mehr...
+\chapter*{Anhang}
+\addcontentsline{toc}{chapter}{Anhang}
 
 % Ehrenwörtliche Erklärung (ohne Seitenzahl, aber im TOC)
 \cleardoublepage
+\pagenumbering{gobble} % keine Seitenzahl anzeigen
 \nocountchapter{Ehrenwörtliche Erklärung}
 \input{ehrenwort}
 
